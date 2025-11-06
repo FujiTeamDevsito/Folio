@@ -45,7 +45,7 @@ export default function Hero({ onNavigate }: HeroProps) {
 
         <div className="inline-block bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 backdrop-blur-sm border border-cyan-500/30 rounded-full px-6 py-2 mb-8">
           <p className="text-xl sm:text-2xl text-cyan-300 font-medium">
-            Desarrollador Full Stack
+            Desarrollador
           </p>
         </div>
 

@@ -53,10 +53,10 @@ export default function About() {
                 <Code2 className="h-12 w-12 text-cyan-400" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                Desarrollo Full Stack
+                Desarrollador
               </h3>
               <p className="text-gray-400">
-                Experiencia en frontend y backend con tecnologías modernas
+                Experiencia en frontend y modding en Minecraft
               </p>
             </div>
           </div>
