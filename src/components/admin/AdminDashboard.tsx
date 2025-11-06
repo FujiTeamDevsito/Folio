@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { LogOut, Briefcase, Users, Share2, Mail } from 'lucide-react';
+import { LogOut, Briefcase, Users, Share2, Mail, Music, Trophy } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import ProjectsManager from './ProjectsManager';
 import CollaboratorsManager from './CollaboratorsManager';
 import SocialLinksManager from './SocialLinksManager';
 import ContactMessagesManager from './ContactMessagesManager';
+import MusicTracksManager from './MusicTracksManager';
+import EventsManager from './EventsManager';
 
-type TabType = 'projects' | 'collaborators' | 'social' | 'messages';
+type TabType = 'projects' | 'collaborators' | 'social' | 'music' | 'events' | 'messages';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<TabType>('projects');
@@ -22,6 +24,10 @@ export default function AdminDashboard() {
         return <SocialLinksManager />;
       case 'messages':
         return <ContactMessagesManager />;
+      case 'music':
+        return <MusicTracksManager />;
+      case 'events':
+        return <EventsManager />;
       default:
         return <ProjectsManager />;
     }
@@ -83,6 +89,17 @@ export default function AdminDashboard() {
               Redes Sociales
             </button>
             <button
+              onClick={() => setActiveTab('music')}
+              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors whitespace-nowrap ${
+                activeTab === 'music'
+                  ? 'border-emerald-500 text-emerald-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Music className="h-5 w-5" />
+              Música
+            </button>
+            <button
               onClick={() => setActiveTab('messages')}
               className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors whitespace-nowrap ${
                 activeTab === 'messages'
@@ -92,6 +109,19 @@ export default function AdminDashboard() {
             >
               <Mail className="h-5 w-5" />
               Mensajes
+            </button>
+            
+
+            <button
+              onClick={() => setActiveTab('events')}
+              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors whitespace-nowrap ${
+                activeTab === 'events'
+                  ? 'border-emerald-500 text-emerald-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Trophy className="h-5 w-5" />
+              Eventos
             </button>
           </div>
         </div>

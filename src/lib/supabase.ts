@@ -54,3 +54,35 @@ export interface ContactMessage {
   read: boolean;
   created_at: string;
 }
+
+// Nueva interfaz para las pistas de música
+export interface MusicTrack {
+  id: string;
+  title: string;
+  artist: string;
+  platform: 'youtube' | 'spotify';
+  url: string;
+  thumbnail_url: string;
+  is_active: boolean;
+  order_position: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Event {
+  id: string;
+  title: string;
+  description: string;
+  role: string;
+  event_type: string;
+  organization: string;
+  location: string;
+  date: string;
+  image_url: string;
+  technologies: string[];
+  achievement: string;
+  link_url: string;
+  order_position: number;
+  created_at: string;
+  updated_at: string;
+}
