@@ -34,3 +34,23 @@ export interface Collaborator {
   created_at: string;
   updated_at: string;
 }
+
+export interface SocialLink {
+  id: string;
+  platform: string;
+  url: string;
+  icon_name: string;
+  order_position: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  read: boolean;
+  created_at: string;
+}

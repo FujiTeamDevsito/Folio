@@ -1,12 +1,31 @@
 import { useState } from 'react';
-import { LogOut, Briefcase, Users } from 'lucide-react';
+import { LogOut, Briefcase, Users, Share2, Mail } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import ProjectsManager from './ProjectsManager';
 import CollaboratorsManager from './CollaboratorsManager';
+import SocialLinksManager from './SocialLinksManager';
+import ContactMessagesManager from './ContactMessagesManager';
+
+type TabType = 'projects' | 'collaborators' | 'social' | 'messages';
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<'projects' | 'collaborators'>('projects');
+  const [activeTab, setActiveTab] = useState<TabType>('projects');
   const { signOut } = useAuth();
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'projects':
+        return <ProjectsManager />;
+      case 'collaborators':
+        return <CollaboratorsManager />;
+      case 'social':
+        return <SocialLinksManager />;
+      case 'messages':
+        return <ContactMessagesManager />;
+      default:
+        return <ProjectsManager />;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -29,10 +48,10 @@ export default function AdminDashboard() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
-          <div className="flex gap-4 border-b border-gray-200">
+          <div className="flex gap-4 border-b border-gray-200 overflow-x-auto">
             <button
               onClick={() => setActiveTab('projects')}
-              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors ${
+              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors whitespace-nowrap ${
                 activeTab === 'projects'
                   ? 'border-emerald-500 text-emerald-600'
                   : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -43,7 +62,7 @@ export default function AdminDashboard() {
             </button>
             <button
               onClick={() => setActiveTab('collaborators')}
-              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors ${
+              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors whitespace-nowrap ${
                 activeTab === 'collaborators'
                   ? 'border-emerald-500 text-emerald-600'
                   : 'border-transparent text-gray-600 hover:text-gray-900'
@@ -52,10 +71,32 @@ export default function AdminDashboard() {
               <Users className="h-5 w-5" />
               Colaboradores
             </button>
+            <button
+              onClick={() => setActiveTab('social')}
+              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors whitespace-nowrap ${
+                activeTab === 'social'
+                  ? 'border-emerald-500 text-emerald-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Share2 className="h-5 w-5" />
+              Redes Sociales
+            </button>
+            <button
+              onClick={() => setActiveTab('messages')}
+              className={`flex items-center gap-2 px-4 py-3 font-medium border-b-2 transition-colors whitespace-nowrap ${
+                activeTab === 'messages'
+                  ? 'border-emerald-500 text-emerald-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Mail className="h-5 w-5" />
+              Mensajes
+            </button>
           </div>
         </div>
 
-        {activeTab === 'projects' ? <ProjectsManager /> : <CollaboratorsManager />}
+        {renderContent()}
       </div>
     </div>
   );

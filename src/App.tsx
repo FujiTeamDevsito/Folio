@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import About from './components/About';
+import SocialLinks from './components/SocialLinks';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import LoginForm from './components/admin/LoginForm';
 import AdminDashboard from './components/admin/AdminDashboard';
@@ -16,6 +18,8 @@ function App() {
     home: null,
     projects: null,
     about: null,
+    social: null,
+    contact: null,
   });
 
   useEffect(() => {
@@ -52,8 +56,8 @@ function App() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="text-white text-xl">Cargando...</div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center">
+        <div className="text-cyan-400 text-xl">Cargando...</div>
       </div>
     );
   }
@@ -77,6 +81,14 @@ function App() {
 
         <section id="about" ref={(el) => (sectionsRef.current.about = el)}>
           <About />
+        </section>
+
+        <section id="social" ref={(el) => (sectionsRef.current.social = el)}>
+          <SocialLinks />
+        </section>
+
+        <section id="contact" ref={(el) => (sectionsRef.current.contact = el)}>
+          <Contact />
         </section>
       </main>
 
